@@ -2,7 +2,8 @@
 <html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="Content-Language" content="zh-CN">
-  <title>登录 - SYSIT个人博客</title>
+    <base href="<?php echo site_url();?>"/>
+    <title>登录 - SYSIT个人博客</title>
     <link rel="stylesheet" href="css/oschina2011.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen">
   <link rel="stylesheet" href="css/osc-popup.css" type="text/css" media="screen">
@@ -34,7 +35,7 @@
 </style>
 
 <div class="MainForm" id="login_page">	
-  <form id="frm_login" action="/action/user/login" method="POST" style="float:left; width:620px;">
+  <form id="frm_login" action="welcome/check_login" method="POST" style="float:left; width:620px;">
     <h2>登录个人博客，如果尚未加入的请点击<a href="reg.htm">注册新会员</a></h2>
     <div id="error_msg" class="error_msg" style="display:none;"></div>
     <table>
@@ -68,35 +69,7 @@
   </div>
 <div class="clear"></div>
 </div>
-<script type="text/javascript">
-<!--
-$('#f_email').focus();$('#frm_login').ajaxForm({
-    beforeSubmit: function(a,f,o) {
-		if($('#f_email').val().length == 0){
-			$('#f_email').focus();
-			$('#error_msg').html("请输入登录的邮箱或者帐号");
-			$('#error_msg').show();
-			return false;
-		}
-		if($('#f_pwd').val().length == 0){
-			$('#f_pwd').focus();
-			$('#error_msg').html("请输入登录密码");
-			$('#error_msg').show();
-			return false;
-		}
-    },
-    success: function(html) {
-    	if(html.length > 0){
-    		$('#error_msg').hide();
-    		$('#error_msg').html(html);
-    		$('#error_msg').show();
-    	}else{
-			    		location.href="/home/go";
-    	}
-    }
-});
-//-->
-</script></div>
+</div>
 	<div id="OSC_Footer">© 赛斯特(WWW.SYSIT.ORG)</div>
 </div>
 </div>
