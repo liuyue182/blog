@@ -1,6 +1,12 @@
 <?php $user = $this->session->userdata('user')?>
 <div id="OSC_Banner">
-    <div id="OSC_Slogon">Johnny's Blog</div>
+    <div id="OSC_Slogon"><?php if(isset($user)){
+            echo "$user->name's Blog";
+        }
+            else{ ?>
+        Johnny's Blog
+        <?php }?>
+    </div>
     <div id="OSC_Channels">
         <ul>
             <li><a href="#" class="project">心情 here...</a></li>
@@ -11,7 +17,13 @@
 <div id="OSC_Topbar">
     <div id="VisitorInfo">
         当前访客身份：
-        <?php echo $user->name;?> [ <a href="index.htm">退出</a> ]
+        <?php if(isset($user)){
+            echo $user->name;
+            echo "[ <a href='welcome/logout'>退出</a> ]";
+        }
+        else{ ?>
+            游客 [ <a href="welcome/login">登录</a> | <a href="welcome/reg">注册</a> ]
+        <?php }?>
 				<span id="OSC_Notification">
 			<a href="inbox.htm" class="msgbox" title="进入我的留言箱">你有<em>0</em>新留言</a>
 																				</span>
@@ -26,10 +38,15 @@
     <div class="clear"></div>
 </div>
 <div id="OSC_Content"><div class="SpaceChannel">
-        <div id="portrait"><a href="adminIndex.htm"><img src="images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></div>
+        <div id="portrait"><a href="welcome/adminIndex"><img src="images/portrait.gif" alt="Johnny" title="Johnny" class="SmallPortrait" user="154693" align="absmiddle"></a></div>
         <div id="lnks">
-            <strong>Johnny的博客</strong>
-            <div><a href="index_logined.htm">TA的博客列表</a>&nbsp;|
+            <strong><?php if(isset($user)){
+                    echo "$user->name's Blog";
+                }
+                else{ ?>
+                    Johnny's Blog
+                <?php }?></strong>
+            <div><a href="welcome//blog_list">TA的博客列表</a>&nbsp;|
                 <a href="sendMsg.htm">发送留言</a></div>
         </div>
         <div class="clear"></div>
